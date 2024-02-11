@@ -1,20 +1,24 @@
 import { AppBar, Toolbar, Typography, Box, Button, Container } from "@mui/material";
 import { useRouter } from 'next/router';
+import CWU from "../icons/cwu-logo.svg";
 
 import Link from "next/link";
+import { useMedia } from "react-use";
 
-const Navigation = () => {
+const MobileNav = () => {
+  return(
+     <div>MobileNav</div>
+  )
+}
+
+const DesktopNav = ({pages}: {pages: string[]}) => {
   const router = useRouter();
-
-    const pages = ["home", "about", "reps", "agreements", "news"]
-   
-
-
-    return (
-        <AppBar position="static">
+  
+  return (
+    <AppBar position="static">
         <Container>
           <Toolbar disableGutters sx={{width: "100%", display: "flex", justifyContent: "space-between", alignItems: "flex-end"}}>
-            <Typography variant="h6">SWWAMAL</Typography>
+             <CWU width="100px"/>
             <Box>
               {pages.map((page) => (
                 <Link href={`${page === "home" ? "/" : `/${page}`}`} key={page}>
@@ -32,6 +36,17 @@ const Navigation = () => {
           </Toolbar>
         </Container>
       </AppBar>
+  )
+}
+
+const Navigation = () => {
+  const isWide = useMedia("(min-width: 600px)", false)
+  const pages = ["home", "about", "reps", "agreements", "news"]
+   
+    return (
+        <>
+        {isWide ? <DesktopNav pages={pages} /> : <MobileNav />}
+        </>
     )
 };
 

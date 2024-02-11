@@ -8,7 +8,7 @@
     "lint:fix": "npm run format && npm run lint -- --fix",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "test": "jest --watch"
+    "test": "jest"
   },
   "prettier": {
     "semi": false,
@@ -29,14 +29,13 @@
     "next-sanity": "5.5.11",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-use": "^17.5.0",
     "sanity": "3.28.0",
     "sanity-plugin-iframe-pane": "2.6.1",
     "styled-components": "6.1.8"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.23.3",
-    "@babel/preset-typescript": "^7.23.3",
-    "@jest/globals": "^29.7.0",
+    "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@types/jest": "^29.5.12",

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
   --space-0: 0;
   --space-1: 4px;
@@ -41,7 +43,7 @@
   --line-height-12: 128px;
 
   --white: #fff;
-  --black: #101112;
+  --black: #141616;
   --gray-200: #ced2d9;
   --gray-600: #6e7683;
   --blue-600: #1e61cd;
@@ -62,6 +64,61 @@ html {
 body {
   margin: 0;
 }
+
+h1 {
+  font-size: 2rem;
+  color: var(--black);
+  font-family: "Roboto";
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--black);
+  font-family: "Roboto";
+  font-weight: 900;
+  text-align: left;
+  margin-bottom: 0.4rem;
+}
+
+h3 {
+  font-size: 1.17rem;
+  color: #666666;
+  font-family: "Roboto";
+  font-weight: 900;
+  text-align: left;
+  margin-bottom: 0.3rem;
+}
+
+h4 {
+  font-size: 1.12rem;
+  color: var(--black);
+  font-family: "Roboto";
+  font-weight: 900;
+  text-align: left;
+  margin-bottom: 0.2rem;
+}
+
+h5 {
+  font-size: 0.83rem;
+  color: var(--black);
+  font-family: "Roboto";
+  font-weight: 900;
+  text-align: left;
+  margin-bottom: 0.1rem;
+}
+
+h6 {
+  font-size: 0.75rem;
+  color: var(--black);
+  font-family: "Roboto";
+  font-weight: 900;
+  text-align: left;
+  margin-bottom: 0.1rem;
+}
+
 
 /* Post page */
 .post {

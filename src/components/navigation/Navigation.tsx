@@ -16,20 +16,24 @@ const DesktopNav = ({pages}: {pages: string[]}) => {
   
   return (
     <AppBar position="static">
-        <Container>
-          <Toolbar disableGutters sx={{width: "100%", display: "flex", justifyContent: "space-between", alignItems: "flex-end"}}>
-             <CWU width="100px"/>
+        <Container >
+          <Toolbar  variant="regular"  sx={{width: "100%", display: "flex", justifyContent: "space-between", alignItems: "flex-end", paddingBottom: "2px"}}>
+             <Box mt={1}>
+              <CWU width="150px" />
+             </Box>
             <Box>
               {pages.map((page) => (
                 <Link href={`${page === "home" ? "/" : `/${page}`}`} key={page}>
-                  <Button sx={{
+                  <Button disableRipple sx={{
+                     padding: "0 1rem",
+                     borderRadius: "0",
                     "&:hover": {
                       backgroundColor: "transparent"
                     },
-                    borderBottom: router.pathname === (page === "home" ? "/" : `/${page}`) ? "1px solid red" : "none"
+                    boxShadow: router.pathname === (page === "home" ? "/" : `/${page}`) ? "0px 2px #cf0e68ff" : "none"
 
                     
-                  }} color="inherit">{page}</Button>
+                  }} variant="text" color="secondary">{page}</Button>
                 </Link>
               ))}
             </Box>

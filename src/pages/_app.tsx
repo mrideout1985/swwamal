@@ -1,9 +1,10 @@
-import '~/styles/global.css'
-
+import '~/styles/global.scss'
 import type { AppProps } from 'next/app'
 import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
 import { lazy } from 'react'
 import Layout from '~/layouts/layout/Layout'
+import { theme } from '~/styles/theme';
+import { ThemeProvider } from '@mui/material/styles';
 
 export interface SharedPageProps {
   draftMode: boolean
@@ -38,26 +39,11 @@ export default function App({
   const { draftMode, token } = pageProps
   return (
     <>
-      <style jsx global>
-        {`
-          :root {
-            --font-family-sans: ${sans.style.fontFamily};
-            --font-family-serif: ${serif.style.fontFamily};
-            --font-family-mono: ${mono.style.fontFamily};
-          }
-        `}
-      </style>
-      {draftMode ? (
-        <Layout>
-          <PreviewProvider token={token}>
-            <Component {...pageProps} />
-          </PreviewProvider>
-        </Layout>
-      ) : (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      )}
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
     </>
   )
 }

@@ -1,21 +1,19 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
-
-import Card from '~/components/Card'
+import SanityBlockContent from '@sanity/block-content-to-react'
 import Container from '~/components/Container'
-import Welcome from '~/components/Welcome'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { getPosts, type Post, postsQuery } from '~/lib/sanity.queries'
+import { getHome, postsQuery, type Post, Home } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
 
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
-    posts: Post[]
+    posts: Home[]
   }
 > = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
-  const posts = await getPosts(client)
+  const posts = await getHome(client)
 
   return {
     props: {
@@ -29,15 +27,12 @@ export const getStaticProps: GetStaticProps<
 export default function IndexPage(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
-  const [posts] = useLiveQuery<Post[]>(props.posts, postsQuery)
+
   return (
     <Container>
       <section>
-        {posts.length ? (
-          posts.map((post) => <Card key={post._id} post={post} />)
-        ) : (
-          <Welcome />
-        )}
+        <SanityBlockContent blocks={props.posts[0].textBlockOne} />
+        <SanityBlockContent blocks={props.posts[0].textBlockTwo} />
       </section>
     </Container>
   )

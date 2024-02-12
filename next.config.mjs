@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
+import path from 'path'
+
 const config = {
   images: { remotePatterns: [{ hostname: 'cdn.sanity.io' }] },
+  sassOptions: {
+    includePaths: [path.join(process.cwd(), 'styles')],
+  },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.('.svg'),

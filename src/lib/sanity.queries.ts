@@ -5,6 +5,36 @@ import { type SanityClient } from 'next-sanity'
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 
+export const homeQuery = groq`*[_type == "home"]{
+  _id,
+  header,
+  slug,
+  image,
+  textBlockOne[]{
+    ...,
+    children[]{
+      ...
+    }
+  },
+  textBlockTwo[]{
+    ...,
+    _type == 'block' => {
+      ...,
+      children[]{
+        ...
+      }
+    },
+    _type == 'image' => {
+      ...
+    }
+  }
+}
+`
+
+export async function getHome(client: SanityClient) {
+  return await client.fetch(homeQuery)
+}
+
 export async function getPosts(client: SanityClient): Promise<Post[]> {
   return await client.fetch(postsQuery)
 }
@@ -33,4 +63,13 @@ export interface Post {
   excerpt?: string
   mainImage?: ImageAsset
   body: PortableTextBlock[]
+}
+
+export interface Home {
+  header: string
+  image: ImageAsset
+  textBlockOne: PortableTextBlock[]
+  textBlockTwo: PortableTextBlock[]
+  slug: Slug
+  _id: string
 }

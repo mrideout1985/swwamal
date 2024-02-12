@@ -17,9 +17,9 @@ const DesktopNav = ({pages}: {pages: string[]}) => {
   return (
     <AppBar position="static">
         <Container >
-          <Toolbar  variant="regular"  sx={{width: "100%", display: "flex", justifyContent: "space-between", alignItems: "flex-end", paddingBottom: "2px"}}>
+          <Toolbar variant="regular" sx={{width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
              <Box mt={1}>
-              <CWU width="150px" />
+              <CWU width="150px" fill="#a41454"/>
              </Box>
             <Box>
               {pages.map((page) => (
@@ -27,10 +27,12 @@ const DesktopNav = ({pages}: {pages: string[]}) => {
                   <Button disableRipple sx={{
                      padding: "0 1rem",
                      borderRadius: "0",
+                     fontWeight: "800",
+                     letterSpacing: "1.5px",
                     "&:hover": {
                       backgroundColor: "transparent"
                     },
-                    boxShadow: router.pathname === (page === "home" ? "/" : `/${page}`) ? "0px 2px #cf0e68ff" : "none"
+                    color: router.pathname === (page === "home" ? "/" : `/${page}`) ? "#80e8b9" : "none"
 
                     
                   }} variant="text" color="secondary">{page}</Button>

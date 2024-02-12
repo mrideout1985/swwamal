@@ -8,7 +8,7 @@ const theme = createTheme({
       main: '#e780ae',
     },
     secondary: {
-      main: '#141616',
+      main: '#a31454ff',
     },
     error: {
       main: '#e57373',
@@ -33,7 +33,8 @@ const theme = createTheme({
         {
           props: { variant: 'text' },
           style: {
-            fontWeight: 700,
+            fontWeight: 500,
+            fontSize: '1rem',
           },
         },
       ],

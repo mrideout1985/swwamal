@@ -1,10 +1,10 @@
-import React, { PropsWithChildren } from "react";
-import Navigation from "~/components/navigation/Navigation";
+import React, { PropsWithChildren } from 'react'
+import Navigation from '~/components/navigation/Navigation'
 
-const Layout: React.FC<PropsWithChildren> = ({children}) => {
+const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
-      <Navigation/>
+      <Navigation />
       <main>{children}</main>
     </>
   )

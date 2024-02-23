@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 export default {
   name: 'reps',
   title: 'Reps',
@@ -35,6 +34,19 @@ export default {
       name: 'email',
       title: 'Email',
       type: 'string',
+    },
+    {
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Branch', value: 'branch' },
+          { title: 'Processing', value: 'processing' },
+          { title: 'Distribution', value: 'distribution' },
+          { title: 'Deliveries', value: 'deliveries' },
+        ],
+      },
     },
   ],
 }

@@ -16,22 +16,29 @@ export const homeQuery = groq`*[_type == "home"]{
       ...
     }
   },
-  textBlockTwo[]{
-    ...,
-    _type == 'block' => {
-      ...,
-      children[]{
-        ...
-      }
-    },
-    _type == 'image' => {
-      ...
-    }
-  }
 }
 `
 
-export async function getHome(client: SanityClient) {
+export const repsQuery = groq`*[_type == "reps"]{
+  _id,
+  name,
+  slug,
+  mainImage{
+    asset->{
+      _id,
+      url
+    },
+    alt
+  },
+  bio,
+  email
+}
+`
+
+export const getReps = async (client: SanityClient): Promise<Reps[]> =>
+  await client.fetch(repsQuery)
+
+export async function getHome(client: SanityClient): Promise<Home[]> {
   return await client.fetch(homeQuery)
 }
 
@@ -54,6 +61,25 @@ export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
 `
 
+export interface Reps {
+  name: string
+  slug: {
+    _type: 'slug'
+    current: string
+  }
+  mainImage: {
+    _type: 'image'
+    asset: {
+      _ref: string
+      _type: 'reference'
+    }
+    alt?: string
+  }
+  bio: string
+  email: string
+  category: 'branch' | 'processing' | 'distribution' | 'deliveries'
+}
+
 export interface Post {
   _type: 'post'
   _id: string
@@ -69,7 +95,6 @@ export interface Home {
   header: string
   image: ImageAsset
   textBlockOne: PortableTextBlock[]
-  textBlockTwo: PortableTextBlock[]
   slug: Slug
   _id: string
 }

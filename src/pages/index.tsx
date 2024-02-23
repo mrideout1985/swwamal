@@ -1,42 +1,53 @@
+import { Container, Paper } from '@mui/material'
 import SanityBlockContent from '@sanity/block-content-to-react'
-import type { GetStaticProps, InferGetStaticPropsType } from 'next'
-import Container from '~/components/Container'
+import type { GetStaticProps } from 'next'
+
+import Card from '~/components/card/Card'
 import HomeLayout from '~/layouts/home/HomeLayout'
-import Layout from '~/layouts/layout/Layout'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { Home, getHome } from '~/lib/sanity.queries'
+import { getHome, getPosts, Home, Post } from '~/lib/sanity.queries'
+
 import { NextPageWithLayout } from './_app'
 
-export const getStaticProps: GetStaticProps<
-  {
-    posts: Home[]
-  }
-> = async ({ draftMode = false }) => {
+export const getStaticProps: GetStaticProps<{
+  home: Home[]
+  posts: Post[]
+}> = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
-  const posts = await getHome(client)
+  const home = await getHome(client)
+  const posts = await getPosts(client)
+
   return {
     props: {
       draftMode,
       token: draftMode ? readToken : '',
+      home,
       posts,
     },
   }
 }
 
-const IndexPage: NextPageWithLayout<{ posts: Home[] }> = (props) => {
+const IndexPage: NextPageWithLayout<{ home: Home[]; posts: Post[] }> = (
+  props,
+) => {
   return (
-    <Container>
+    <Container maxWidth="sm">
       <section>
-        <SanityBlockContent blocks={props.posts[0].textBlockOne} />
-        <SanityBlockContent blocks={props.posts[0].textBlockTwo} />
+        <SanityBlockContent blocks={props.home[0].textBlockOne} />
+      </section>
+      <section>
+        <h2>Latest News</h2>
+        <ul style={{ padding: 0 }}>
+          {props.posts.map((post) => (
+            <Card post={post} key={post.slug.current} />
+          ))}
+        </ul>
       </section>
     </Container>
-  );
-};
+  )
+}
 
-IndexPage.getLayout = (page) => (
-    <HomeLayout>{page}</HomeLayout>
-);
+IndexPage.getLayout = (page) => <HomeLayout>{page}</HomeLayout>
 
-export default IndexPage;
+export default IndexPage

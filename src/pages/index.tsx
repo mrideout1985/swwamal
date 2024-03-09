@@ -1,4 +1,4 @@
-import { Container, Paper } from '@mui/material'
+import { Container, List, ListItem, Paper } from '@mui/material'
 import SanityBlockContent from '@sanity/block-content-to-react'
 import type { GetStaticProps } from 'next'
 
@@ -32,17 +32,19 @@ const IndexPage: NextPageWithLayout<{ home: Home[]; posts: Post[] }> = (
   props,
 ) => {
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <section>
         <SanityBlockContent blocks={props.home[0].textBlockOne} />
       </section>
       <section>
         <h2>Latest News</h2>
-        <ul style={{ padding: 0 }}>
+        <List style={{ padding: 0 }}>
           {props.posts.map((post) => (
-            <Card post={post} key={post.slug.current} />
+            <ListItem>
+              <Card post={post} key={post.slug.current} />
+            </ListItem>
           ))}
-        </ul>
+        </List>
       </section>
     </Container>
   )

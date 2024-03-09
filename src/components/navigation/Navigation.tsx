@@ -23,11 +23,10 @@ const DesktopNav = ({ pages }: { pages: string[] }) => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
+            paddingY: "1rem"
           }}
         >
-          <Box mt={1}>
-            <CWU width="150px" fill="#a41454" />
-          </Box>
+          <CWU width="150px" fill="#ff0077"  />
           <Box>
             {pages.map((page) => (
               <Link href={`${page === 'home' ? '/' : `/${page}`}`} key={page}>
@@ -43,7 +42,7 @@ const DesktopNav = ({ pages }: { pages: string[] }) => {
                     },
                     color:
                       router.pathname === (page === 'home' ? '/' : `/${page}`)
-                        ? '#fff'
+                        ? "#ff0077"
                         : 'none',
                   }}
                   variant="text"

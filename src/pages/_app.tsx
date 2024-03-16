@@ -1,11 +1,13 @@
+import '~/styles/global.scss'
+
 import { ThemeProvider } from '@mui/material/styles'
 import { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
 import type { ReactElement, ReactNode } from 'react'
 import { lazy } from 'react'
+
 import Layout from '~/layouts/layout/Layout'
-import '~/styles/global.scss'
 import { theme } from '~/styles/theme'
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {

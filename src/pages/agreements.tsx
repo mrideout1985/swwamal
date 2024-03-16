@@ -9,9 +9,11 @@ import {
   Typography,
 } from '@mui/material'
 import { GetStaticProps } from 'next'
+
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { Agreement, Reps, getAbout, getAgreements } from '~/lib/sanity.queries'
+import { Agreement, getAbout, getAgreements,Reps } from '~/lib/sanity.queries'
+
 import reps from './reps'
 
 export const getStaticProps: GetStaticProps<{

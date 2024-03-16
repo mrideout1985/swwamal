@@ -1,9 +1,10 @@
+import { Box, Card as PostCard } from '@mui/material'
 import Image from 'next/image'
 
 import { urlForImage } from '~/lib/sanity.image'
 import { type Post } from '~/lib/sanity.queries'
 import { formatDate } from '~/utils'
-import { Box, Card as PostCard } from '@mui/material'
+
 import styles from './Card.module.scss'
 
 export default function Card({ post }: { post: Post }) {

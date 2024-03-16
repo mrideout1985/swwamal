@@ -11,6 +11,11 @@ jest.mock('next/router', () => ({
   }),
 }))
 
+jest.mock('react-use', () => ({
+  ...jest.requireActual('react-use'),
+  useMedia: jest.fn(),
+}))
+
 describe('Layout', () => {
   it('should render children', () => {
     const screen = render(

@@ -12,7 +12,7 @@ import { GetStaticProps } from 'next'
 
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { Agreement, getAbout, getAgreements,Reps } from '~/lib/sanity.queries'
+import { Agreement, getAbout, getAgreements, Reps } from '~/lib/sanity.queries'
 
 import reps from './reps'
 

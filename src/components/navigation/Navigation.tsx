@@ -18,6 +18,8 @@ const DesktopNav = ({ pages }: { pages: string[] }) => {
         <Toolbar
           variant="regular"
           disableGutters
+          component="nav"
+          aria-label="primary navigation"
           sx={{
             width: '100%',
             display: 'flex',

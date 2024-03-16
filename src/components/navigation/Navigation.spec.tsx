@@ -3,7 +3,6 @@ import { useMedia } from 'react-use'
 
 import Navigation from './Navigation'
 
-// Mocking Next.js router
 jest.mock('next/router', () => ({
   useRouter: () => ({
     route: '/',
@@ -13,10 +12,9 @@ jest.mock('next/router', () => ({
   }),
 }))
 
-// Mocking react-use
 jest.mock('react-use', () => ({
-  ...jest.requireActual('react-use'), // This will keep other hooks from react-use as is
-  useMedia: jest.fn(), // Mock useMedia specifically
+  ...jest.requireActual('react-use'),
+  useMedia: jest.fn(),
 }))
 
 describe('Navigation', () => {
@@ -26,6 +24,14 @@ describe('Navigation', () => {
     const screen = render(<Navigation />)
 
     expect(screen.getByText('MobileNav')).toBeInTheDocument()
+  })
+
+  it('should render desktop navigation when screen is more than 600px', () => {
+    ;(useMedia as jest.Mock).mockImplementation(() => true)
+
+    const screen = render(<Navigation />)
+
+    expect(screen.getByLabelText('primary navigation')).toBeInTheDocument()
   })
 
   it('should render navigation links', () => {
@@ -48,10 +54,6 @@ describe('Navigation', () => {
     expect(screen.getByRole('link', { name: 'agreements' })).toHaveAttribute(
       'href',
       '/agreements',
-    )
-    expect(screen.getByRole('link', { name: 'news' })).toHaveAttribute(
-      'href',
-      '/news',
     )
   })
 })

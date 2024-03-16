@@ -7,8 +7,8 @@
   align-items: center;
 
   &::before {
-    background-color: #000000bd;
-    opacity: 0;
+    background-color: #0000009d;
+    opacity: 1;
     position: absolute;
     content: '';
     width: 100%;
@@ -17,18 +17,12 @@
   }
 
   &:hover::before {
-    opacity: 1;
-  }
-
-  &:hover {
-    .card__container {
-      opacity: 1;
-    }
+    background-color: #000000;
   }
 
   &__container {
     z-index: 99;
-    opacity: 0;
+    opacity: 1;
     transition: 0.25s ease-out;
     border: dashed 2px #ff0077;
 

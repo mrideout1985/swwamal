@@ -58,10 +58,10 @@ export default function ProjectSlugRoute(
             <Image
               className="post__cover"
               src={urlForImage(post.mainImage).url()}
-              width={960}
-              height={720}
+              width={768}
+              height={1024}
+              style={{ width: '100%', height: 'auto' }}
               alt={post.mainImage.title}
-              layout="intrinsic"
             />
           )}
         </Box>

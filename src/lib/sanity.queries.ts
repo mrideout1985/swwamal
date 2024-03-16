@@ -33,10 +33,20 @@ export const repsQuery = groq`*[_type == "reps"]{
 export const aboutQuery = groq`
   *[_type == "about"]{
     title,
-    "imageUrl": image.asset->url,
+    image,
     slug,
     body
   }
+`
+
+export const agreementQuery = groq`*[_type == "agreements"]{
+  _id,
+  policyname,
+  slug,
+  policytype,
+  url,
+  categories
+}
 `
 
 export const getReps = async (client: SanityClient): Promise<Reps[]> =>
@@ -52,6 +62,12 @@ export async function getPosts(client: SanityClient): Promise<Post[]> {
 
 export const getAbout = async (client: SanityClient): Promise<About[]> => {
   return await client.fetch(aboutQuery)
+}
+
+export const getAgreements = async (
+  client: SanityClient,
+): Promise<Agreement[]> => {
+  return await client.fetch(agreementQuery)
 }
 
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`
@@ -70,6 +86,7 @@ export const postSlugsQuery = groq`
 `
 
 export interface Reps {
+  _id: string
   name: string
   slug: {
     _type: 'slug'
@@ -105,4 +122,13 @@ export interface About {
   image: ImageAsset
   slug: Slug
   body: PortableTextBlock[]
+}
+
+export interface Agreement {
+  _id: string
+  policyname: string
+  slug: Slug
+  policytype: string
+  url: string
+  categories: string[]
 }

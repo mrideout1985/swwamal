@@ -14,13 +14,12 @@ import { getReps, Reps } from '~/lib/sanity.queries'
 
 export const getStaticProps: GetStaticProps<{
   reps: Reps[]
-}> = async ({ draftMode = false }) => {
+}> = async () => {
   const client = getClient()
   const reps = await getReps(client)
 
   return {
     props: {
-      draftMode,
       token: readToken,
       reps,
     },
@@ -40,7 +39,7 @@ const RepTable = ({ reps, title }: { reps: Reps[]; title: string }) => (
       </TableHead>
       <TableBody>
         {reps.map((rep: Reps) => (
-          <TableRow>
+          <TableRow key={rep._id}>
             <TableCell>{rep.name}</TableCell>
             <TableCell>{rep.email}</TableCell>
             <TableCell>{rep.role}</TableCell>

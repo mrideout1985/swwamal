@@ -31,7 +31,16 @@ export default {
       name: 'categories',
       title: 'Categories',
       type: 'array',
-      of: [{ type: 'reference', to: { type: 'category' } }],
+      of: [{ type: 'string' }],
+      options: {
+        list: [
+          { title: 'Parcel Force', value: 'parcel force' },
+          { title: 'Other', value: 'other' },
+          { title: 'Time Off', value: 'time off' },
+          { title: 'Postal', value: 'postal' },
+          { title: 'Processing', value: 'processing' },
+        ],
+      },
     },
   ],
 }

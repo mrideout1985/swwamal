@@ -40,7 +40,7 @@ const IndexPage: NextPageWithLayout<{ home: Home[]; posts: Post[] }> = (
         <h3>Latest News</h3>
         <List style={{ padding: 0 }}>
           {props.posts.map((post) => (
-            <ListItem>
+            <ListItem key={post._id}>
               <Card post={post} key={post.slug.current} />
             </ListItem>
           ))}

@@ -37,7 +37,7 @@ const IndexPage: NextPageWithLayout<{ home: Home[]; posts: Post[] }> = (
         <SanityBlockContent blocks={props.home[0].textBlockOne} />
       </section>
       <section>
-        <h2>Latest News</h2>
+        <h3>Latest News</h3>
         <List style={{ padding: 0 }}>
           {props.posts.map((post) => (
             <ListItem>

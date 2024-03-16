@@ -26,8 +26,8 @@ export default {
       },
     },
     {
-      name: 'bio',
-      title: 'Bio',
+      name: 'role',
+      title: 'Role',
       type: 'string',
     },
     {
@@ -36,9 +36,10 @@ export default {
       type: 'string',
     },
     {
-      name: 'category',
-      title: 'Category',
-      type: 'string',
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      of: [{ type: 'string' }],
       options: {
         list: [
           { title: 'Branch', value: 'branch' },

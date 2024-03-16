@@ -23,16 +23,20 @@ export const repsQuery = groq`*[_type == "reps"]{
   _id,
   name,
   slug,
-  mainImage{
-    asset->{
-      _id,
-      url
-    },
-    alt
-  },
+  mainImage,
   bio,
-  email
+  email,
+  categories
 }
+`
+
+export const aboutQuery = groq`
+  *[_type == "about"]{
+    title,
+    "imageUrl": image.asset->url,
+    slug,
+    body
+  }
 `
 
 export const getReps = async (client: SanityClient): Promise<Reps[]> =>
@@ -44,6 +48,10 @@ export async function getHome(client: SanityClient): Promise<Home[]> {
 
 export async function getPosts(client: SanityClient): Promise<Post[]> {
   return await client.fetch(postsQuery)
+}
+
+export const getAbout = async (client: SanityClient): Promise<About[]> => {
+  return await client.fetch(aboutQuery)
 }
 
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`
@@ -67,17 +75,10 @@ export interface Reps {
     _type: 'slug'
     current: string
   }
-  mainImage: {
-    _type: 'image'
-    asset: {
-      _ref: string
-      _type: 'reference'
-    }
-    alt?: string
-  }
-  bio: string
+  mainImage: ImageAsset
+  role: string
   email: string
-  category: 'branch' | 'processing' | 'distribution' | 'deliveries'
+  categories: string[]
 }
 
 export interface Post {
@@ -97,4 +98,11 @@ export interface Home {
   textBlockOne: PortableTextBlock[]
   slug: Slug
   _id: string
+}
+
+export interface About {
+  title: string
+  image: ImageAsset
+  slug: Slug
+  body: PortableTextBlock[]
 }

@@ -67,6 +67,32 @@ const theme = createTheme({
         },
       },
     },
+    MuiTableCell: {
+      styleOverrides: {
+        head: {
+          backgroundColor: '#35374B',
+          color: '#fff',
+          fontWeight: 'bold',
+          padding: '16px',
+          textAlign: 'left',
+          textTransform: 'uppercase',
+          borderBottom: '2px solid #f0f0f0',
+        },
+      },
+    },
+    MuiTableRow: {
+      styleOverrides: {
+        root: {
+          '&:not(.MuiTableRow-head):nth-child(odd)': {
+            backgroundColor: '#faa9cf',
+          },
+          color: '#ff0077',
+        },
+      },
+      defaultProps: {
+        style: {},
+      },
+    },
   },
 })
 

@@ -2,8 +2,6 @@ import { PortableText } from '@portabletext/react'
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
-
-import Container from '~/components/Container'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { urlForImage } from '~/lib/sanity.image'
@@ -15,6 +13,7 @@ import {
 } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
 import { formatDate } from '~/utils'
+import { Box, Container } from '@mui/material'
 
 interface Query {
   [key: string]: string
@@ -52,28 +51,29 @@ export default function ProjectSlugRoute(
   })
 
   return (
-    <Container>
-      <section className="post">
-        {post.mainImage ? (
-          <Image
-            className="post__cover"
-            src={urlForImage(post.mainImage).url()}
-            height={231}
-            width={367}
-            alt=""
-          />
-        ) : (
-          <div className="post__cover--none" />
-        )}
-        <div className="post__container">
-          <h1 className="post__title">{post.title}</h1>
-          <p className="post__excerpt">{post.excerpt}</p>
-          <p className="post__date">{formatDate(post._createdAt)}</p>
-          <div className="post__content">
+    <Container maxWidth="md">
+      <Box component="section" mt={1}>
+        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+          {post.mainImage && (
+            <Image
+              className="post__cover"
+              src={urlForImage(post.mainImage).url()}
+              width={960}
+              height={720}
+              alt={post.mainImage.title}
+              layout="intrinsic"
+            />
+          )}
+        </Box>
+        <Box>
+          <h1>{post.title}</h1>
+          <p>{post.excerpt}</p>
+          <p>{formatDate(post._createdAt)}</p>
+          <Box>
             <PortableText value={post.body} />
-          </div>
-        </div>
-      </section>
+          </Box>
+        </Box>
+      </Box>
     </Container>
   )
 }

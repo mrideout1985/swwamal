@@ -29,10 +29,5 @@ export default {
       title: 'Body',
       type: 'blockContent',
     },
-    {
-      name: 'secondBody',
-      title: 'Second Body',
-      type: 'blockContent',
-    },
   ],
 }

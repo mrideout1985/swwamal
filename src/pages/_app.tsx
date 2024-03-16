@@ -7,7 +7,7 @@ import { lazy } from 'react'
 import Layout from '~/layouts/layout/Layout'
 import '~/styles/global.scss'
 import { theme } from '~/styles/theme'
- 
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
@@ -42,20 +42,12 @@ const serif = PT_Serif({
   weight: ['400', '700'],
 })
 
-export default function App({
-  Component,
-  pageProps,
-}: AppPropsWithLayout) {
-
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page)
-
 
   return (
     <ThemeProvider theme={theme}>
-      <Layout>
-       {getLayout(<Component {...pageProps} />)}
-      </Layout>
+      <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
     </ThemeProvider>
-  );
-
+  )
 }

@@ -3,10 +3,10 @@ import SanityBlockContent from '@sanity/block-content-to-react'
 import { GetStaticProps } from 'next'
 import Image from 'next/image'
 
-import { readToken } from '~/lib/sanity.api'
-import { getClient } from '~/lib/sanity.client'
-import { urlForImage } from '~/lib/sanity.image'
-import { About, getAbout } from '~/lib/sanity.queries'
+import { readToken } from 'src/lib/sanity.api'
+import { getClient } from 'src/lib/sanity.client'
+import { urlForImage } from 'src/lib/sanity.image'
+import { About, getAbout } from 'src/lib/sanity.queries'
 
 export const getStaticProps: GetStaticProps<{
   about: About[]

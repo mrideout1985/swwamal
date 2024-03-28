@@ -1,8 +1,8 @@
 import { Box } from '@mui/material'
 import React, { PropsWithChildren } from 'react'
 
-import Footer from '~/components/footer/Footer'
-import Navigation from '~/components/navigation/Navigation'
+import Footer from 'src/components/footer/Footer'
+import Navigation from 'src/components/navigation/Navigation'
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (

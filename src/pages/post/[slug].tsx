@@ -4,17 +4,17 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
 
-import { readToken } from '~/lib/sanity.api'
-import { getClient } from '~/lib/sanity.client'
-import { urlForImage } from '~/lib/sanity.image'
+import { readToken } from 'src/lib/sanity.api'
+import { getClient } from 'src/lib/sanity.client'
+import { urlForImage } from 'src/lib/sanity.image'
 import {
   getPost,
   type Post,
   postBySlugQuery,
   postSlugsQuery,
-} from '~/lib/sanity.queries'
-import type { SharedPageProps } from '~/pages/_app'
-import { formatDate } from '~/utils'
+} from 'src/lib/sanity.queries'
+import type { SharedPageProps } from 'src/pages/_app'
+import { formatDate } from 'src/utils'
 
 interface Query {
   [key: string]: string

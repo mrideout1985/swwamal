@@ -1,12 +1,12 @@
-import '~/styles/global.scss'
+import 'src/styles/global.scss'
 
 import { ThemeProvider } from '@mui/material/styles'
 import { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import type { ReactElement, ReactNode } from 'react'
 
-import Layout from '~/layouts/layout/Layout'
-import { theme } from '~/styles/theme'
+import Layout from 'src/layouts/layout/Layout'
+import { theme } from 'src/styles/theme'
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode

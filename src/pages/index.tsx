@@ -2,11 +2,11 @@ import { Container, List, ListItem, Paper } from '@mui/material'
 import SanityBlockContent from '@sanity/block-content-to-react'
 import type { GetStaticProps } from 'next'
 
-import Card from '~/components/card/Card'
-import HomeLayout from '~/layouts/home/HomeLayout'
-import { readToken } from '~/lib/sanity.api'
-import { getClient } from '~/lib/sanity.client'
-import { getHome, getPosts, Home, Post } from '~/lib/sanity.queries'
+import Card from 'src/components/card/Card'
+import HomeLayout from 'src/layouts/home/HomeLayout'
+import { readToken } from 'src/lib/sanity.api'
+import { getClient } from 'src/lib/sanity.client'
+import { getHome, getPosts, Home, Post } from 'src/lib/sanity.queries'
 
 import { NextPageWithLayout } from './_app'
 

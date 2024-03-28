@@ -10,9 +10,9 @@ import {
 } from '@mui/material'
 import { GetStaticProps } from 'next'
 
-import { readToken } from '~/lib/sanity.api'
-import { getClient } from '~/lib/sanity.client'
-import { Agreement, getAgreements } from '~/lib/sanity.queries'
+import { readToken } from 'src/lib/sanity.api'
+import { getClient } from 'src/lib/sanity.client'
+import { Agreement, getAgreements } from 'src/lib/sanity.queries'
 
 export const getStaticProps: GetStaticProps<{
   agreements: Agreement[]

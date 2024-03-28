@@ -7,10 +7,9 @@ import {
   TableRow,
 } from '@mui/material'
 import { GetStaticProps } from 'next'
-
-import { readToken } from '~/lib/sanity.api'
-import { getClient } from '~/lib/sanity.client'
-import { getReps, Reps } from '~/lib/sanity.queries'
+import { readToken } from 'src/lib/sanity.api'
+import { getClient } from 'src/lib/sanity.client'
+import { Reps, getReps } from 'src/lib/sanity.queries'
 
 export const getStaticProps: GetStaticProps<{
   reps: Reps[]
@@ -68,12 +67,17 @@ const RepsPage = (props) => {
     rep.categories?.includes('processing'),
   )
 
+  const filterRepsByHealth: Reps[] = props.reps.filter((rep: Reps) =>
+    rep.categories?.includes('health'),
+  )
+
   return (
     <Container maxWidth="md">
       <RepTable title="Branch" reps={filterRepsByBranch} />
       <RepTable title="Deliveries" reps={filterRepsByDeliveries} />
       <RepTable title="Distribution" reps={filterRepsByDistribution} />
       <RepTable title="Processing" reps={filterRepsByProcessing} />
+      <RepTable title="Health And Safety" reps={filterRepsByHealth} />
     </Container>
   )
 }

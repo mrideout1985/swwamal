@@ -18,8 +18,8 @@ import {
   dataset,
   previewSecretId,
   projectId,
-} from '~/lib/sanity.api'
-import { schema } from '~/schemas'
+} from './src/lib/sanity.api'
+import { schema } from './src/schemas'
 
 const iframeOptions = {
   url: defineUrlResolver({

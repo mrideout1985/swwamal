@@ -12,20 +12,4 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
 
 export default defineCliConfig({
   api: { projectId, dataset },
-  vite: (viteConfig) => ({
-    ...viteConfig,
-    build: {
-      rollupOptions: {
-        input: {
-          main: './sanity.config.ts',
-        },
-        external: [
-          './src/lib/sanity.api',
-          ...(Array.isArray(viteConfig.build?.rollupOptions?.external)
-            ? viteConfig.build.rollupOptions.external
-            : []),
-        ],
-      },
-    },
-  }),
 })

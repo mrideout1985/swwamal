@@ -46,6 +46,7 @@ export default {
           { title: 'Processing', value: 'processing' },
           { title: 'Distribution', value: 'distribution' },
           { title: 'Deliveries', value: 'deliveries' },
+          { title: 'Health and Safety', value: 'health' },
         ],
       },
     },

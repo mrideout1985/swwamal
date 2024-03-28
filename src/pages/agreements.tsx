@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps<{
       token: readToken,
       agreements,
     },
-    revalidate: 5,
+    revalidate: 2,
   }
 }
 

@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps<{
       token: readToken,
       reps,
     },
-    revalidate: 5,
+    revalidate: 2,
   }
 }
 

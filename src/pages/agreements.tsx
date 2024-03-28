@@ -12,9 +12,7 @@ import { GetStaticProps } from 'next'
 
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { Agreement, getAbout, getAgreements, Reps } from '~/lib/sanity.queries'
-
-import reps from './reps'
+import { Agreement, getAgreements } from '~/lib/sanity.queries'
 
 export const getStaticProps: GetStaticProps<{
   agreements: Agreement[]
@@ -27,6 +25,7 @@ export const getStaticProps: GetStaticProps<{
       token: readToken,
       agreements,
     },
+    revalidate: 5,
   }
 }
 

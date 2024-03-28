@@ -25,6 +25,7 @@ export const getStaticProps: GetStaticProps<{
       home,
       posts,
     },
+    revalidate: 5,
   }
 }
 

@@ -26,7 +26,8 @@ export const repsQuery = groq`*[_type == "reps"]{
   mainImage,
   bio,
   email,
-  categories
+  categories,
+  role
 }
 `
 

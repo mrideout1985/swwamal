@@ -16,11 +16,16 @@ const MobileNav = ({ pages }: { pages: string[] }) => {
           disableGutters
           component="nav"
           aria-label="primary navigation"
-          sx={{
-            width: '100%',
-          }}
         >
-          <Box>
+          <Box
+            sx={{
+              width: '100%',
+              marginX: 'auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
             {pages.map((page) => (
               <Link href={`${page === 'home' ? '/' : `/${page}`}`} key={page}>
                 <Button

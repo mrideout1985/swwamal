@@ -41,7 +41,7 @@ const RepTable = ({ reps, title }: { reps: Reps[]; title: string }) => (
         {reps.map((rep: Reps) => (
           <TableRow key={rep._id}>
             <TableCell>{rep.name}</TableCell>
-            <TableCell>{rep.email}</TableCell>
+            <TableCell sx={{ wordBreak: 'break-word' }}>{rep.email}</TableCell>
             <TableCell>{rep.role}</TableCell>
           </TableRow>
         ))}

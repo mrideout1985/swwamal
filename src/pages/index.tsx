@@ -1,4 +1,11 @@
-import { Container, List, ListItem, Paper } from '@mui/material'
+import {
+  Box,
+  Container,
+  List,
+  ListItem,
+  Paper,
+  Typography,
+} from '@mui/material'
 import SanityBlockContent from '@sanity/block-content-to-react'
 import type { GetStaticProps } from 'next'
 
@@ -46,6 +53,11 @@ const IndexPage: NextPageWithLayout<{ home: Home[]; posts: Post[] }> = (
             </ListItem>
           ))}
         </List>
+        {!props.posts.length && (
+          <Box>
+            <Typography variant="h6">Slow news day...</Typography>
+          </Box>
+        )}
       </section>
     </Container>
   )

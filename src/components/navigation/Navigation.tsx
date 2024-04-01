@@ -76,7 +76,7 @@ const DesktopNav = ({ pages }: { pages: string[] }) => {
             paddingY: '1rem',
           }}
         >
-          <CWU width="150px" fill="#ff0077" />
+          <CWU width="160px" height="auto" fill="#ff0077" />
           <Box>
             {pages.map((page) => (
               <Link href={`${page === 'home' ? '/' : `/${page}`}`} key={page}>
